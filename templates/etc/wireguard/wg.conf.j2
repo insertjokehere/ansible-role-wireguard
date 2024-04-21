@@ -52,7 +52,7 @@ PostDown = {{ wg_postdown }}
 SaveConfig = {{ wireguard_save_config }}
 {% endif %}
 {% for host in ansible_play_hosts %}
-{%   if host != inventory_hostname %}
+{%   if host != inventory_hostname and hostvars[host].wireguard__fact_public_key is defined %}
 
 [Peer]
 # Name = {{ host }}
